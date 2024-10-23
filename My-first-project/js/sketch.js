@@ -131,8 +131,11 @@ function changeColor() {
 }
 
 function fizzySpeed() {
-  circleX = circleX + speedX;
-  circleY = circleY + speedY;
+    console.log(circleX,'x')
+    console.log(speedX,'xs')
+    console.log(circleY,'y')
+    console.log(speedY,'ys')
+
 
   //Bounce walls
   if (circleX > 720) {
@@ -145,8 +148,11 @@ function fizzySpeed() {
   } else if (circleY < 100) {
     speedY = -speedY;
   }
+  circleX = circleX + speedX;
+  circleY = circleY + speedY;
   eyesAndMouthPositions();
 }
+
 
 function eyesAndMouthPositions() {
   lefteyeX = circleX - 20;
