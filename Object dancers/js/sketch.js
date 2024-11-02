@@ -57,7 +57,7 @@ class NatsumiDancer {
     
     this.y = this.startY + sin(frameCount * 0.1) * this.jumping;
 
-    this.legAngle = sin(frameCount * 0.1) * QUARTER_PI / 2; // Legs swing in/out
+    this.legAngle = sin(frameCount * 0.1) * QUARTER_PI / 2;
     this.armAngle = cos(frameCount * 0.1) * QUARTER_PI / 2;
   }
   display() {
