@@ -812,7 +812,7 @@ class BehindWindow {
     let birdX = this.x + this.w - 50;
     let birdY = this.y + 30;
 
-    fill(255, 215, 0); // Bird body
+    fill(161, 171, 186); // Bird body
     ellipse(birdX, birdY, 20, 18); // Body
 
     fill(0); // Bird eye
@@ -822,7 +822,7 @@ class BehindWindow {
     triangle(birdX + 10, birdY - 2, birdX + 15, birdY, birdX + 10, birdY + 2);
 
     // Bird wing
-    fill(255, 165, 0);
+    fill(121, 124, 129);
     arc(birdX - 2, birdY, 15, 10, HALF_PI, PI + HALF_PI);
   }
 }
