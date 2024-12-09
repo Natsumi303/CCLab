@@ -8,80 +8,86 @@ h6,
 p {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
-
 
 
 #p5-canvas-container {
   display: block;
-  margin:20px 0;
+  /* margin:5px 0; */
   margin-left: 20px;
-  width: 300px;
+  width: 700px;
 }
 
 .big-container{
+  position:fixed;
   background-color: rgb(255, 235, 210);
-  text-align: center;
   font-family:cursive;
-  height: 600px;
-  width: 750px;
-  margin: 20px;
+  height: 100vh;
+  width: 100vw;
   display:flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+}
+.description-wrapper {
+  
+  width: 250px;
+  height: 500px;
+  
+  position: absolute;
+  left: 40px;
+  top: 140px;
+
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 20px;
+  border: 2px solid rgb(161, 146, 129);
+  border-radius: 10px;
+  
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
 }
 
 .description1-container{
   text-align: left;
   background-color: rgb(233, 209, 180);
   width: 120px;
-  margin:5px 0;
-  padding:5px 10px;
+  margin:10px 0;
+  padding:10px 15px;
   width:fit-content;
-  margin-bottom: 2px;
 }
 
 .description2-container{
   text-align:left;
   background-color: rgb(233, 209, 180);
   width:120px;
-  margin:5px 0;
-  padding:5px 10px;
+  margin:10px 0;
+  padding:10px 15px;
   width:fit-content;
-  margin-bottom: 2px;
 }
 
 .description3-container{
   text-align: left;
   background-color:rgb(233, 209, 180);
   width:120px;
-  margin:5px 0;
-  padding:5px 10px;
+  margin:10px 0;
+  padding:10px 15px;
   width:fit-content;
-  margin-bottom: 2px;
 }
 
-.description-wrapper {
-  width: 180px;
-  height: 350px;
-  
-  position: absolute;
-  left: 25px;
-  top: 160px;
-  gap:10px;
-
-  margin-top: 20px;
-  margin-left: 10px;
-  padding: 20px;
-  border: 2px solid rgb(161, 146, 129);
-  border-radius: 20px;
-}
 
 
 .headline-container {
-  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 h1{
@@ -90,6 +96,18 @@ h1{
 
 p{
   font-size:larger;
+}
+
+#back{
+  position: fixed;
+  right:10vw;
+  top:10vh;
+  padding: 8px 16px;
+  background-color: coral;
+  border-radius: 25px;
+  font-size: 1em;
+  color:white;
+  font-family: cursive;
 }
 
 
