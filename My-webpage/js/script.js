@@ -382,11 +382,11 @@ function drawBird() {
     scale(1, 1);
   }
   //Bird body
-  fill(255, 215, 0);
+  fill(161, 171, 186);
   ellipse(0, 0, 40, 30);
 
   // Bird head 
-  fill(255, 215, 0);
+  fill(161, 171, 186);
   ellipse(18, - 15, 20, 20);
 
   // Bird eye
@@ -398,11 +398,11 @@ function drawBird() {
   triangle(28, - 20, 35, - 20, 28, - 15);
 
   // Bird tail
-  fill(255, 215, 0);
+  fill(161, 171, 186);
   triangle(- 10, 8, - 30, 20, - 18, 25);
 
   // Bird wings
-  fill(255, 165, 0);
+  fill(121, 124, 129);
   arc(3, 0, 40, 23, HALF_PI, PI + HALF_PI);
   pop();
 }
