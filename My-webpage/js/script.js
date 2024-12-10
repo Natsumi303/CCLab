@@ -10,8 +10,8 @@ let pen;
 let powerBotton;
 let sceneChanged = false;
 let remoteClicked = false;
-let houseX = 520;
-let houseY = 340;
+let houseX = 490;
+let houseY = 295;
 let birdX = 400;
 let birdY = 50;
 let birdSpeed = 1;
@@ -23,6 +23,10 @@ let dogY = 445;
 let dogYorigin = 445;
 let dogYspeed = 0;
 let dogJump = false;
+
+let isPenClicked = false;
+let message = "";
+let inputBox = { x: 200, y: 220, width: 300, height: 130 };
 
 let sunflowerAngle = 0;
 let sunflowerClicked = false;
@@ -51,9 +55,13 @@ let dogBark;
 let buttons = [];
 let butterflies = [];
 
+let fishExist = false;
+let fishPositions = [];
 
 let debugMode = true;
 let canvasScale = 1.3;
+
+
 
 function preload() {
   musicPlay = loadSound("assets/musicPlay.mp3");
@@ -61,14 +69,13 @@ function preload() {
   gardenSound = loadSound("assets/garden.mp3");
   hiSound = loadSound("assets/hi.wav");
   dogBark = loadSound("assets/dog.wav");
+  fishWater = loadSound("assets/fish.wav");
   powerTV = loadImage("assets/tv.jpeg");
   video1 = createVideo("assets/Coca.mp4");
   video2 = createVideo("assets/burger.mp4");
   video3 = createVideo("assets/disney.mp4");
   video4 = createVideo("assets/bbc.mp4");
 }
-
-
 
 function setup() {
   let canvas = createCanvas(550 * canvasScale, 400 * canvasScale);
@@ -95,7 +102,6 @@ function setup() {
   }
 
 
-
   video1.hide();
   video1.pause();
   video2.hide();
@@ -114,8 +120,15 @@ function draw() {
   if (sceneChanged) {
     drawGarden();
     moveBird();
+    for (let pos of fishPositions) {
+      drawFish(pos.x, pos.y);
+    }
+
     if (showBubble) {
       drawBubble();
+    }
+    if (fishExist) {
+      drawFish(fishX, fishY);
     }
 
   } else {
@@ -158,8 +171,6 @@ function draw() {
       }
     }
 
-
-
     if (powerBotton.isOn) {
       // play
       image(powerTV, 366, 157, 225, 120);
@@ -200,12 +211,18 @@ function draw() {
       video4.stop();
     }
 
-
     if (showMessage) {
       displayMessage();
     }
-  }
 
+    if (isPenClicked) {
+      fill(244, 213, 169);
+      rect(inputBox.x, inputBox.y, inputBox.width, inputBox.height);
+      fill(0);
+      textSize(18);
+      text(message, inputBox.x + 10, inputBox.y + 25);
+    }
+  }
 }
 
 function drawGarden() {
@@ -226,6 +243,7 @@ function drawGarden() {
   drawBird();
   moveBird();
   drawGirl();
+  drawRiver();
 
 
   if (dogJump) {
@@ -264,8 +282,6 @@ function drawGarden() {
   if (!gardenSound.isPlaying()) {
     gardenSound.play();
   }
-
-
 }
 
 function drawSun() {
@@ -407,7 +423,6 @@ function drawBird() {
   pop();
 }
 
-
 function moveBird() {
   birdX += birdSpeed * birdDirection;
   birdY = 80 + sin(frameCount * 0.05) * 30;
@@ -469,10 +484,19 @@ function drawGirl() {
   rect(girlX - 20, girlY - 35, 8, 20);
   rect(girlX + 12, girlY - 35, 8, 20);
 
+  // Left hand
+  fill(255, 224, 189); // Skin tone for hands
+  ellipse(girlX - 17, girlY - 15, 12, 12); // Left hand (simplified, as a small circle)
+
+  // Right hand
+  ellipse(girlX + 17, girlY - 15, 12, 12); // Right hand (simplified, as a small circle)
+
   // Blush
   fill(255, 182, 193, 150);
   ellipse(girlX - 12, girlY - 60, 6, 4);
   ellipse(girlX + 12, girlY - 60, 6, 4);
+
+
 }
 
 function drawHouse() {
@@ -520,6 +544,20 @@ function drawBubble() {
   text("Hi! Nice to meet u!", 310, 250);
 }
 
+function drawRiver() {
+  noStroke();
+  fill(70, 130, 180);
+  ellipse(650, 440, 120, 98);
+  ellipse(600, 460, 120, 100);
+  ellipse(550, 460, 120, 95);
+}
+
+function drawFish(x, y) {
+  noStroke();
+  fill(255, 165, 0);
+  ellipse(x, y, 20, 8.5);
+  triangle(x - 10, y, x - 20, y - 5, x - 20, y + 5); // Fish tail
+}
 
 function drawSunflower(x, y, angle) {
   // Stem
@@ -730,18 +768,18 @@ class Butterfly {
     noStroke();
 
     // Top wings
-    ellipse(10, -5, this.size * 1.2, this.size / 1.5);
-    ellipse(-10, -5, this.size * 1.2, this.size / 1.5);
+    ellipse(10, -5, this.size * 1.4, this.size);
+    ellipse(-10, -5, this.size * 1.4, this.size);
 
     // Bottom wings
-    ellipse(15, 10, this.size * 1.4, this.size);
-    ellipse(-15, 10, this.size * 1.4, this.size);
+    ellipse(11, 8, this.size - 5, this.size / 1.8);
+    ellipse(-11, 8, this.size - 5, this.size / 1.8);
 
     // Butterfly body
-    fill(0);
-    ellipse(0, 0, this.size / 1.5, this.size + 5);
+    fill(210, 112, 112);
+    ellipse(0, 0, this.size / 2.5, this.size + 5);
 
-    stroke(0);
+    stroke(210, 112, 112);
     strokeWeight(1);
     line(-2, -this.size / 2, -10, -this.size);
     line(2, -this.size / 2, 10, -this.size);
@@ -749,7 +787,6 @@ class Butterfly {
     pop();
   }
 }
-
 
 class Table {
   constructor(x, y, w, h) {
@@ -1051,6 +1088,7 @@ class Book {
 
 function displayMessage() {
 
+  push();
   fill(225);
   stroke(0);
   strokeWeight(2);
@@ -1062,7 +1100,8 @@ function displayMessage() {
   textStyle(ITALIC);
   textAlign(CENTER, CENTER);
   textWrap(WORD);
-  text("To the future, we invite you to step back in time and explore the many ways we entertained ourselves in the present. I hope you get a kick out of how we filled our days! ", width / 2 - 90, height / 2 + 110, 220)
+  text("To the future, we invite you to step back in time and explore the many ways we entertained ourselves in the present. I hope you get a kick out of how we filled our days! ", width / 2 - 90, height / 2 + 110, 220);
+  pop();
 }
 
 class Pen {
@@ -1147,13 +1186,13 @@ class PowerBotton {
 
 }
 
-
 let sunflowerX = 400;
 let sunflowerY = 430;
 let flowerX = 350;
 let flowerY = 350;
 let flower3X = 50;
 let flower3Y = 360;
+
 function mousePressed() {
   if (sceneChanged == true) {
     if (mouseX >= houseX && mouseX <= houseX + 100 && mouseY > houseY && mouseY < houseY + 100) {
@@ -1186,7 +1225,11 @@ function mousePressed() {
       flower3Clicked = true;
     }
 
-
+    if (mouseX > 500 && mouseX < 550 * canvasScale && mouseY > 400 && mouseY < 400 * canvasScale) {
+      // Add a new fish at the clicked location
+      fishPositions.push({ x: mouseX, y: mouseY });
+      fishWater.play();
+    }
 
     //外面的interaction放在这里
   } else {
@@ -1230,5 +1273,27 @@ function mousePressed() {
       showMessage = false;
     }
   }
+  let d = dist(mouseX, mouseY, pen.x, pen.y);
+  if (d < 30) {
+    isPenClicked = !isPenClicked;
+    message = "";
+  } else {
+    isPenClicked = false;
+  }
 }
 
+function keyTyped() {
+  if (isPenClicked) {
+    message += key;
+  }
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    isPenClicked = false;
+  }
+
+  if (keyCode === BACKSPACE && isPenClicked) {
+    message = message.slice(0, -1);
+  }
+}
