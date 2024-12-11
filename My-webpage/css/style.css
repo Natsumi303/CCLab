@@ -14,27 +14,27 @@ p {
 
 #p5-canvas-container {
   display: block;
-  /* margin:5px 0; */
   margin-left: 20px;
   width: 700px;
 }
 
-.big-container{
-  position:fixed;
+.big-container {
+  position: fixed;
   background-color: rgb(255, 235, 210);
-  font-family:cursive;
+  font-family: cursive;
   height: 100vh;
   width: 100vw;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
 }
+
 .description-wrapper {
-  
+
   width: 250px;
   height: 500px;
-  
+
   position: absolute;
   left: 40px;
   top: 140px;
@@ -44,39 +44,39 @@ p {
   padding: 20px;
   border: 2px solid rgb(161, 146, 129);
   border-radius: 10px;
-  
-  display:flex;
+
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
 }
 
-.description1-container{
+.description1-container {
   text-align: left;
   background-color: rgb(233, 209, 180);
   width: 120px;
-  margin:10px 0;
-  padding:10px 15px;
-  width:fit-content;
+  margin: 10px 0;
+  padding: 10px 15px;
+  width: fit-content;
 }
 
-.description2-container{
-  text-align:left;
-  background-color: rgb(233, 209, 180);
-  width:120px;
-  margin:10px 0;
-  padding:10px 15px;
-  width:fit-content;
-}
-
-.description3-container{
+.description2-container {
   text-align: left;
-  background-color:rgb(233, 209, 180);
-  width:120px;
-  margin:10px 0;
-  padding:10px 15px;
-  width:fit-content;
+  background-color: rgb(233, 209, 180);
+  width: 120px;
+  margin: 10px 0;
+  padding: 10px 15px;
+  width: fit-content;
+}
+
+.description3-container {
+  text-align: left;
+  background-color: rgb(233, 209, 180);
+  width: 120px;
+  margin: 10px 0;
+  padding: 10px 15px;
+  width: fit-content;
 }
 
 
@@ -90,25 +90,22 @@ p {
   margin-bottom: 20px;
 }
 
-h1{
+h1 {
   font-size: 3em;
 }
 
-p{
-  font-size:larger;
+p {
+  font-size: larger;
 }
 
-#back{
+#back {
   position: fixed;
-  right:10vw;
-  top:10vh;
+  right: 10vw;
+  top: 10vh;
   padding: 8px 16px;
   background-color: coral;
   border-radius: 25px;
   font-size: 1em;
-  color:white;
+  color: white;
   font-family: cursive;
 }
-
-
-

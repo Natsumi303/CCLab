@@ -1297,3 +1297,4 @@ function keyPressed() {
     message = message.slice(0, -1);
   }
 }
+
